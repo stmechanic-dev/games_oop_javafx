@@ -2,24 +2,37 @@ package ru.job4j.puzzle;
 
 public class Win {
     public static boolean check(int[][] board) {
-        boolean rsl = false; //result
-        int rowCount = 0;
-        int cellCount = 0;
+        boolean result = false;
         for (int i = 0; i < board.length; i++) {
-            if (board[i][i] == 1){
-                for (int j = 0; j < board.length; j++) {
-                    if (board[i][j] == 1) {
-                        rowCount++;
-                    }
-                    if (board[j][i] == 1) {
-                        cellCount++;
-                    }
+            if (1 == board[i][i]) {
+                if (checkHorizontal(board, i) || checkVertical(board, i)) {
+                    result = true;
+                    break;
                 }
             }
         }
-        if (rowCount == board.length || cellCount == board.length) {
-            rsl = true;
+        return result;
+    }
+
+    public static boolean checkHorizontal(int[][] board, int row) {
+        boolean result = true;
+        for (int i = 0; i < board[row].length; i++) {
+            if (1 != board[row][i]) {
+                result = false;
+                break;
+            }
         }
-        return rsl;
+        return result;
+    }
+
+    public static boolean checkVertical(int[][] board, int column) {
+        boolean result = true;
+        for (int i = 0; i < board.length; i++) {
+            if (1 != board[i][column]) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 }
