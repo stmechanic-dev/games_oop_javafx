@@ -60,9 +60,7 @@ public class Logic {
         return rst;
     }
 
-    public boolean isWin() {
-        return Win.check(convert());
-    }
+    public boolean isWin() { return Win.check(convert()); }
 
     public int[][] convert() {
         int[][] table = new int[size][size];
