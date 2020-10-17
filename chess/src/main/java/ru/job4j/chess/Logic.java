@@ -8,6 +8,10 @@ public final class Logic {
     private final Figure[] figures = new Figure[32];
     private int index = 0;
 
+    public Figure[] getFigures() {
+        return figures;
+    }
+
     public void add(Figure figure) {
         figures[index++] = figure;
     }
@@ -21,6 +25,13 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
+        for (int i = 0; i < steps.length; i++) {
+            for (int j = 0; j < figures.length; j++) {
+                if (steps[i].equals(figures[j])) {
+                    throw new OccupiedCellException();
+                }
+            }
+        }
         return true;
     }
 
