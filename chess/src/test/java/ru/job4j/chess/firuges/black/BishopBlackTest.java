@@ -2,6 +2,7 @@ package ru.job4j.chess.firuges.black;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.job4j.chess.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 
 import static org.hamcrest.core.Is.is;
@@ -22,14 +23,14 @@ public class BishopBlackTest {
     }
 
     @Test
-    public void whenMoveRight() {
+    public void whenMoveRight() throws ImpossibleMoveException {
         BishopBlack bb = new BishopBlack(Cell.C1);
         Cell[] cells = bb.way(Cell.G5);
         assertThat(cells, is(new Cell[] {Cell.D2, Cell.E3, Cell.F4, Cell.G5}));
     }
 
     @Test
-    public void whenMoveLeft() {
+    public void whenMoveLeft() throws ImpossibleMoveException {
         BishopBlack bb = new BishopBlack(Cell.C1);
         Cell[] cells = bb.way(Cell.A3);
         assertThat(cells, is(new Cell[] {Cell.B2, Cell.A3}));
